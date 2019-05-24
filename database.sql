@@ -1,3 +1,6 @@
+-- NOTE THAT THE DATABASE NAMED USED IN THIS PROJECT IS
+-- "joins-lecture"
+
 -- Create the Person Table
 CREATE TABLE "person" (
 	"id" serial primary key,
@@ -18,7 +21,7 @@ CREATE TABLE "person_hobbies" (
 );
 
 -- Person Table INSERTs
-INSERT INTO "person" ("name") 
+INSERT INTO "person" ("name")
 VALUES ('Scott'), ('Rachael'), ('Myron'), ('Isaac'), ('Devon'), ('Austin'), ('Konou');
 
 -- Hobby Table INSERTs
@@ -28,7 +31,6 @@ VALUES ('Video Games'), ('Drawing'), ('Lettering'), ('Watching Netflix'), ('Read
 -- Junction Table INSERTs
 INSERT INTO "person_hobbies" ("person_id", "hobby_id")
 VALUES (1, 1), (1, 2), (2, 2), (2, 3), (2, 4), (3, 1), (3, 2), (3, 3), (3, 4), (6, 9), (7, 7);
-
 
 -- Give me all of it!
 SELECT * FROM "person"
@@ -46,7 +48,7 @@ JOIN "person_hobbies" ON "person"."id"="person_hobbies"."person_id"
 JOIN "hobby" ON "person_hobbies"."hobby_id"="hobby"."id"
 WHERE "name"='Scott';
 
--- Give me Scott's hobbies in Alpha order 
+-- Give me Scott's hobbies in Alpha order
 SELECT "name", "hobby_name" FROM "person"
 JOIN "person_hobbies" ON "person"."id"="person_hobbies"."person_id"
 JOIN "hobby" ON "person_hobbies"."hobby_id"="hobby"."id"
